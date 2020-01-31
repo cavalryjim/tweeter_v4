@@ -9,7 +9,7 @@ class TweetTests(TestCase):
         self.user = get_user_model().objects.create_user(
             username='testuser',
             email='test@email.com',
-            password='secret'
+            password='specialpwd'
         )
 
         self.tweet = Tweet.objects.create(
@@ -25,7 +25,7 @@ class TweetTests(TestCase):
         self.assertEqual(f'{self.tweet.user}', 'testuser')
         self.assertEqual(f'{self.tweet.body}', 'Nice tweet!')
 
-    def test_post_list_view(self):
+    def test_tweet_list_view(self):
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Nice tweet!')
@@ -33,8 +33,8 @@ class TweetTests(TestCase):
 
     def test_tweet_create_view(self):
         response = self.client.post(reverse('tweet_new'), {
-            'body': 'New text',
+            'body': 'New tweet',
             'user': self.user,
         })
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'New text')
+        self.assertContains(response, 'New tweet')
