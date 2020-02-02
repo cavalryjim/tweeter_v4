@@ -9,5 +9,8 @@ class Tweet(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
 
+    class Meta:
+        ordering = ['-created_at']
+
     def __str__(self):
         return self.body
