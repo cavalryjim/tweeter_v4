@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'bootstrap4', # new
+    'bootstrap4',
+    'bootstrap_datepicker_plus', # new
 
     'users',
     'tweets',
@@ -121,6 +122,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+BOOTSTRAP4 = { 'include_jquery': True }
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
