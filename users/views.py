@@ -20,6 +20,7 @@ class UserUpdateView(SuccessMessageMixin, generic.UpdateView):
 
     # This keeps users from accessing the profile of other users.
     def get_queryset(self):
+        # return CustomUser.objects.all()
         user = self.request.user
         if user.is_superuser:
             return CustomUser.objects.all()
